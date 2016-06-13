@@ -5,4 +5,5 @@ bin/
 node_modules/
 typings/
 app.sublime-workspace
+sublime-project.sublime-workspace
 
