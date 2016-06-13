@@ -9,56 +9,56 @@ export interface IBook {
 @Injectable()
 export class BooksService{
 	
-	getBooks: Array<IBook>(){
+	getBooks(): Array<IBook>{
 		return [
 			{
-				title: 'The Lord of the Rings',
-				author: 'The Lord of the Rings'
+				title: "The Lord of the Rings",
+				author: "The Lord of the Rings",
 				price: 39.99
 			},
 			{
-				title: 'Harry Potter and the Philosopher's Stone',
-				author: 'J.K. Rowling'
+				title: "Harry Potter and the Philosopher''s Stone",
+				author: "J.K. Rowling",
 				price: 29.99
 			},
 			{
-				title: 'And Then There Were None',
-				author: 'Agatha Christie'
+				title: "And Then There Were None",
+				author: "Agatha Christie",
 				price: 15.99
 			},
 			{
-				title: 'The Lion, the Witch and the Wardrobe',
-				author: 'C. S. Lewis'
+				title: "The Lion, the Witch and the Wardrobe",
+				author: "C. S. Lewis",
 				price: 19.99
 			},
 			{
-				title: 'The Da Vinci Code',
-				author: 'Dan Brown'
+				title: "The Da Vinci Code",
+				author: "Dan Brown",
 				price: 24.99
 			},
 			{
-				title: 'Think and Grow Rich',
-				author: 'Napoleon Hill'
+				title: "Think and Grow Rich",
+				author: "Napoleon Hill",
 				price: 14.99
 			},
 			{
-				title: 'Anne of Green Gables',
-				author: 'Lucy Maud Montgomery'
+				title: "Anne of Green Gables",
+				author: "Lucy Maud Montgomery",
 				price: 15.99
 			},
 			{
-				title: 'The Eagle Has Landed',
-				author: 'Jack Higgins'
+				title: "The Eagle Has Landed",
+				author: "Jack Higgins",
 				price: 23.99
 			},
 			{
-				title: 'The Mark of Zorro',
-				author: 'Johnston McCulley'
+				title: "The Mark of Zorro",
+				author: "Johnston McCulley",
 				price: 34.99
 			},
 			{
-				title: 'Charlotte''s Web',
-				author: 'E.B. White'
+				title: "Charlotte''s Web",
+				author: "E.B. White",
 				price: 27.90
 			}
 		]

@@ -1,36 +1,32 @@
 import { Component, OnInit } from '@angular/core';
 import { BookComponent } from '../books/book.component';
 
-import { BooksService } from '../books/books.service';
+import { BooksService, IBook } from '../books/books.service';
 
 @Component({
 	moduleId: module.id,
 	selector: 'books',
-	styleUrl: 'books.style.css'
+	styleUrls: ['books.style.css'],
 	directives: [
 		BookComponent
 	],
 	template: `
-		<ul *ngIf="this.books !== null && this.books.length > 0">
-      <li *ngFor="let book in this.books"><book book="book"></book></li>
+		<ul *ngIf="books !== null && books.length > 0">
+      <li *ngFor="let book of books"><book [bookData]="book"></book></li>
     </ul>
 	`
 })
-export class BooksComponent: OnInit { 
+export class BooksComponent implements OnInit { 
 
-  books: Array<IBook> = null;
+  	books: Array<IBook> = null;
 
 	constructor(
-    private _externLibsService: ExternLibsService,
-    private _booksService: BooksService
-  ){
+		private _booksService: BooksService
+	){
 
 	}
 
-	ngOnInit(){
-		let moment = this._externLibsService.moment();
-		this.currentDate: moment().format();
-
-    this.books = _booksService.getBooks();
+	ngOnInit(){		
+		this.books = this._booksService.getBooks();
 	}
 }

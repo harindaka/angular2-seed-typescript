@@ -1,21 +1,22 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 import { IBook } from './books.service';
 
 @Component({
 	moduleId: module.id,
 	selector: 'book',
-	styleUrl: 'book.style.css'
+	styleUrls: ['book.style.css'],
 	directives: [  		
 	],
 	template: `
-		<div *ngIf="">{{ book.title }} by {{ book.author }} (${{ book.price }})</div>
-    <button>Details<button>
+		<div *ngIf="bookData !== null">{{ bookData.title }} by {{ bookData.author }} ({{ bookData.price }})</div>
+    	<button>Details</button>
 	`
 })
-export class BookComponent: OnInit { 
+export class BookComponent implements OnInit { 
 
-  @Input() book: IBook;
+  	@Input() bookData: any;
+  	@Input() title: string;
 
 	constructor(){
 

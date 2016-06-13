@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { BooksComponent } from '../books/books.component';
+
+import { ExternLibsService } from '../common/extern-libs/extern-libs.service'
 
 @Component({
 	moduleId: module.id,
-	selector: 'app',
-	styleUrl: 'home.style.css'
+	selector: 'home',
+	styleUrls: ['home.style.css'],
 	directives: [
 		BooksComponent
 	],
@@ -16,10 +19,10 @@ import { Component, OnInit } from '@angular/core';
 		<button>Authors</button>
 	`
 })
-export class HomeComponent: OnInit { 
+export class HomeComponent implements OnInit { 
 
 	currentDate: any = null;
-	config: { companyName: 'Acme' };
+	config = { companyName: 'Acme' };
 
 	constructor(private _externLibsService: ExternLibsService){
 
@@ -27,6 +30,6 @@ export class HomeComponent: OnInit {
 
 	ngOnInit(){
 		let moment = this._externLibsService.moment();
-		this.currentDate: moment().format();
+		this.currentDate = moment().format();
 	}
 }
