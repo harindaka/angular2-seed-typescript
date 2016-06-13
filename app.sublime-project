@@ -1,0 +1,10 @@
+{
+	"folders":
+	[
+		{
+			"path": ".",
+			"folder_exclude_patterns": [],
+        	"file_exclude_patterns": ["app/*.js", "app/**/*.js", "app/*.js.map", "app/**/*.js.map"]
+		}
+	]
+}

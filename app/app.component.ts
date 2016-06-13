@@ -1,6 +1,21 @@
 import { Component } from '@angular/core';
+import { HomeComponent } from './home/home.component';
+
+import { ExternLibsService } from './common/extern-libs/extern-libs.service';
+import { BooksService } from './books/books.service';
+
 @Component({
-  selector: 'my-app',
-  template: '<h1>My First Angular 2 App</h1>'
+  	moduleId: module.id,
+	selector: 'app',
+	directives: [
+		HomeComponent
+	],
+	template: `
+		<home></home>
+	`,
+	providers: [
+		ExternLibsService,
+		BooksService
+	]
 })
 export class AppComponent { }
