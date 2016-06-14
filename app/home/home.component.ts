@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { BooksComponent } from '../books/books.component';
+import { BookDetailsComponent } from '../books/book-details.component';
 
 import { MomentFormatter } from '../common/pipes/moment-formatter.pipe';
+
+import { IBook } from '../books/books.service';
 
 import { ExternLibsService } from '../common/extern-libs/extern-libs.service';
 
@@ -10,7 +13,8 @@ import { ExternLibsService } from '../common/extern-libs/extern-libs.service';
 	selector: 'home',
 	styleUrls: ['home.style.css'],
 	directives: [
-		BooksComponent
+		BooksComponent,
+		BookDetailsComponent
 	],
 	pipes: [
 		MomentFormatter
@@ -25,6 +29,7 @@ import { ExternLibsService } from '../common/extern-libs/extern-libs.service';
 		<hr/>
 		<div class="row">
 			<books></books>
+			<book-details [bookData]="selectedBook"></book-details>
 		</div>
 		<div class="row">
 			<p>*As at {{ currentDate | momentFormatter: ['datetime'] }}</p>	
@@ -33,6 +38,7 @@ import { ExternLibsService } from '../common/extern-libs/extern-libs.service';
 })
 export class HomeComponent implements OnInit { 
 
+	selectedBook: IBook = null;
 	currentDate: any = null;
 	config = { companyName: 'Acme' };
 

@@ -30,7 +30,7 @@ import { IBook } from './books.service';
 })
 export class BookComponent implements OnInit { 
 
-  	@Input() bookData: any;
+  	@Input() bookData: IBook;
   	@Input() title: string;
 
 	constructor(){
