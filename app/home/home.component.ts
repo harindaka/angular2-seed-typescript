@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { BooksComponent } from '../books/books.component';
 
-import { ExternLibsService } from '../common/extern-libs/extern-libs.service'
+import { MomentFormatter } from '../common/pipes/moment-formatter.pipe';
+
+import { ExternLibsService } from '../common/extern-libs/extern-libs.service';
 
 @Component({
 	moduleId: module.id,
@@ -10,9 +12,12 @@ import { ExternLibsService } from '../common/extern-libs/extern-libs.service'
 	directives: [
 		BooksComponent
 	],
+	pipes: [
+		MomentFormatter
+	]
 	template: `
-		<h1>Welcome to {{ config.companyName }} Book Store!</h1>  		
-		<h2>Top Sellers</h2>
+		<h1>Welcome to {{ config.companyName }} Book Store!</h1>
+		<h2>Top Sellers as at {{ currentDate | momentFormatter: ['datetime'] }}</h2>
 		<hr/>
 		<books></books>
 		<br/>
@@ -30,6 +35,6 @@ export class HomeComponent implements OnInit {
 
 	ngOnInit(){
 		let moment = this._externLibsService.moment();
-		this.currentDate = moment().format();
+		this.currentDate = moment();
 	}
 }
