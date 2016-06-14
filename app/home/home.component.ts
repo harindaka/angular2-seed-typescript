@@ -14,14 +14,21 @@ import { ExternLibsService } from '../common/extern-libs/extern-libs.service';
 	],
 	pipes: [
 		MomentFormatter
-	]
+	],
 	template: `
-		<h1>Welcome to {{ config.companyName }} Book Store!</h1>
-		<h2>Top Sellers as at {{ currentDate | momentFormatter: ['datetime'] }}</h2>
+		<div class="container">
+  			<div class="jumbotron">
+				<h1>{{ config.companyName }} Book Store</h1>
+				<p>Welcome! Checkout our top sellers below.</p> 
+			</div>
+		</div>
 		<hr/>
-		<books></books>
-		<br/>
-		<button>Authors</button>
+		<div class="row">
+			<books></books>
+		</div>
+		<div class="row">
+			<p>*As at {{ currentDate | momentFormatter: ['datetime'] }}</p>	
+		</div>	
 	`
 })
 export class HomeComponent implements OnInit { 

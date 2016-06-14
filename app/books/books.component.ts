@@ -6,14 +6,20 @@ import { BooksService, IBook } from '../books/books.service';
 @Component({
 	moduleId: module.id,
 	selector: 'books',
-	styleUrls: ['books.style.css'],
+	styleUrls: [
+		'books.style.css'
+	],
 	directives: [
 		BookComponent
 	],
 	template: `
-		<ul *ngIf="books !== null && books.length > 0">
-      <li *ngFor="let book of books"><book [bookData]="book"></book></li>
-    </ul>
+		<div class="container col-md-6">
+			<ul *ngIf="books !== null && books.length > 0" class="list-group">
+		      <li *ngFor="let book of books" class="list-group-item clearfix">
+		      	<book [bookData]="book"></book>
+		      </li>
+		    </ul>
+	    </div>
 	`
 })
 export class BooksComponent implements OnInit { 
