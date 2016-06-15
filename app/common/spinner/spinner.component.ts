@@ -21,12 +21,12 @@ export class SpinnerComponent implements OnInit {
 	_isVisible: boolean = false;
 
 	constructor(private _spinnerService: SpinnerService) {
-		
+		_spinnerService.visibilityChanged.subscribe((visibility) => {
+			this._isVisible = visibility;
+		});
 	}
 
 	ngOnInit(){
-		this._spinnerService.getSpinnerVisibility().subscribe((result)=>{
-			this._isVisible = result;
-		});
+		
 	}
 }

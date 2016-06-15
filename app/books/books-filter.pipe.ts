@@ -22,7 +22,7 @@ export class BooksFilterPipe implements PipeTransform{
 		else{
 			let filterString = '';
 
-			if(args[0].length > 0){
+			if(typeof args !== 'undefined' && args !== null && args[0].length > 0){
 				filterString = args[0];
 			}
 

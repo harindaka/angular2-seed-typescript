@@ -21,7 +21,7 @@ import { BooksService, IBook } from '../books/books.service';
 	template: `
 		<span class="container col-md-6">
 			<ul *ngIf="books !== null && books.length > 0" class="list-group">
-		      <li *ngFor="let book of books | booksFilter: ['Lord']" class="list-group-item clearfix">
+		      <li *ngFor="let book of books | booksFilter" class="list-group-item clearfix">
 		      	<book [bookData]="book" (bookSelected)="onBookSelected($event)" ></book>
 		      </li>
 		    </ul>
@@ -43,7 +43,7 @@ export class BooksComponent implements OnInit {
 	ngOnInit(){	
 		this._spinnerService.show();
 
-		this._booksService.getBooks().subscribe((booksList) => {
+		this._booksService.getBooks().subscribe((booksList) => {			
 			this.books = booksList;
 			this._spinnerService.hide();
 		}, ()=>{
