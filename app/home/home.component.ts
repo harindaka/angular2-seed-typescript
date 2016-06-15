@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BooksComponent } from '../books/books.component';
 import { BookDetailsComponent } from '../books/book-details.component';
 
-import { MomentFormatter } from '../common/pipes/moment-formatter.pipe';
+import { MomentFormatterPipe } from '../common/pipes/moment-formatter.pipe';
 
 import { IBook } from '../books/books.service';
 
@@ -17,7 +17,7 @@ import { ExternLibsService } from '../common/extern-libs/extern-libs.service';
 		BookDetailsComponent
 	],
 	pipes: [
-		MomentFormatter
+		MomentFormatterPipe
 	],
 	template: `
 		<div class="container">

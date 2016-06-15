@@ -27,7 +27,7 @@ export class ExternLibsService {
 		return Decimal;
 	}
 
-	lazy(): any {
+	lazyjs(): any {
 		return Lazy;
 	}
 }

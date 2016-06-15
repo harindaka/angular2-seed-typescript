@@ -1,10 +1,12 @@
-import { Injectable } from '@angular/core'
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
 
 export interface IBook {
 	bookId: number,
 	title: string
 	author: string
-	price: number
+	price: number,
+	imageUrl: string
 }
 
 @Injectable()
@@ -83,7 +85,13 @@ export class BooksService{
 			}
 		];
 
-	getBooks(): Array<IBook>{
-		return this.mockBooksList;
+	getBooks(): Observable<Array<IBook>>{
+		return Observable.create((observer) => {
+			setTimeout(()=> {
+				//Simulate service request delay
+				observer.next(this.mockBooksList);
+				observer.complete();
+			}, 3000);
+		});
 	}
 }

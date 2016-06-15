@@ -1,6 +1,9 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { BookComponent } from '../books/book.component';
 
+import { BooksFilterPipe } from './books-filter.pipe';
+
+import { SpinnerService } from '../common/spinner/spinner.service';
 import { BooksService, IBook } from '../books/books.service';
 
 @Component({
@@ -12,10 +15,13 @@ import { BooksService, IBook } from '../books/books.service';
 	directives: [
 		BookComponent
 	],
+	pipes: [
+		BooksFilterPipe
+	],
 	template: `
 		<span class="container col-md-6">
 			<ul *ngIf="books !== null && books.length > 0" class="list-group">
-		      <li *ngFor="let book of books" class="list-group-item clearfix">
+		      <li *ngFor="let book of books | booksFilter: ['Lord']" class="list-group-item clearfix">
 		      	<book [bookData]="book" (bookSelected)="onBookSelected($event)" ></book>
 		      </li>
 		    </ul>
@@ -28,13 +34,21 @@ export class BooksComponent implements OnInit {
   	@Output() bookSelected: EventEmitter<IBook> = new EventEmitter<IBook>();
 
 	constructor(
+		private _spinnerService: SpinnerService,
 		private _booksService: BooksService
 	){
 
 	}
 
-	ngOnInit(){		
-		this.books = this._booksService.getBooks();
+	ngOnInit(){	
+		this._spinnerService.show();
+
+		this._booksService.getBooks().subscribe((booksList) => {
+			this.books = booksList;
+			this._spinnerService.hide();
+		}, ()=>{
+			this._spinnerService.hide();
+		});
 	}
 
 	onBookSelected(book: IBook){

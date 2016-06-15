@@ -4,7 +4,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 	name: 'momentFormatter'
 })
 
-export class MomentFormatter implements PipeTransform{
+export class MomentFormatterPipe implements PipeTransform{
 	transform(value: any, args: string[]): string{
 		if(typeof value === 'undefined' || value === null){
 			return '';

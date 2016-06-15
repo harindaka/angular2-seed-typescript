@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
+import { SpinnerComponent } from './common/spinner/spinner.component';
 import { HomeComponent } from './home/home.component';
 
 import { ExternLibsService } from './common/extern-libs/extern-libs.service';
+import { SpinnerService } from './common/spinner/spinner.service';
 import { BooksService } from './books/books.service';
 
 @Component({
@@ -11,9 +13,12 @@ import { BooksService } from './books/books.service';
 		'app.style.css'
 	],
 	directives: [
-		HomeComponent
+		HomeComponent,
+		SpinnerComponent
 	],
 	template: `
+		<spinner></spinner>
+
 		<div class="navbar navbar-default">
 	        <div class="container-fluid">
 	          <div class="navbar-header">
@@ -58,6 +63,7 @@ import { BooksService } from './books/books.service';
 	`,
 	providers: [
 		ExternLibsService,
+		SpinnerService,
 		BooksService
 	]
 })
