@@ -20,7 +20,7 @@ import { IBook } from './books.service';
 			  <dt>Author</dt><dd>{{ bookData.author }}</dd>
 			  <dt>Price</dt><dd>{{ bookData.price }}</dd>
 			</dl>
-			<button class="btn btn-success">Purchase</button>				
+			<button (click)="onAddToCart()" class="btn btn-success">Add to Cart</button>				
 		</span>
 		<span *ngIf="bookData === null">
 			<span class="well well-lg col-md-6">Select book to view details...</span>	
@@ -37,5 +37,10 @@ export class BookDetailsComponent implements OnInit {
 
 	ngOnInit(){
 		
+	}
+
+	onAddToCart(){
+		alert('This will throw an error for demo purposes');
+		throw (new Error('This error was thrown to demonstrate the centralized error handling mechanism'));
 	}
 }
