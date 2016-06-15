@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, Output, OnInit, EventEmitter } from '@angular/core';
 
 import { IBook } from './books.service';
 
@@ -23,7 +23,7 @@ import { IBook } from './books.service';
 				</span>
 			</a>
 			<span class="pull-right clearfix">
-				<button class="btn btn-info price-button">({{ bookData.price | currency:'USD':true:'1.2-2' }})</button>
+				<button (click)="bookSelected.emit(bookData)" class="btn btn-info price-button">({{ bookData.price | currency:'USD':true:'1.2-2' }})</button>
 			</span>						
 		</span>    	
 	`
@@ -32,6 +32,8 @@ export class BookComponent implements OnInit {
 
   	@Input() bookData: IBook;
   	@Input() title: string;
+
+  	@Output() bookSelected: EventEmitter<IBook> = new EventEmitter<IBook>();
 
 	constructor(){
 

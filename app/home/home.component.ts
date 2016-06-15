@@ -28,7 +28,7 @@ import { ExternLibsService } from '../common/extern-libs/extern-libs.service';
 		</div>
 		<hr/>
 		<div class="row">
-			<books></books>
+			<books (bookSelected)="onBookSelected($event)"></books>
 			<book-details [bookData]="selectedBook"></book-details>
 		</div>
 		<div class="row">
@@ -49,5 +49,9 @@ export class HomeComponent implements OnInit {
 	ngOnInit(){
 		let moment = this._externLibsService.moment();
 		this.currentDate = moment();
+	}
+
+	onBookSelected(book: IBook){
+		this.selectedBook = book;
 	}
 }

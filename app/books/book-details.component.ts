@@ -12,7 +12,9 @@ import { IBook } from './books.service';
 	],
 	template: `
 		<span *ngIf="bookData !== null" class="container col-md-6">	
-			<img [src]="bookData.imageUrl" [alt]="bookData.title"/>
+			<img [src]="bookData.imageUrl" [alt]="bookData.title" class="img-thumbnail" width="300em" height="300em"/>
+			<br/>
+			<br/>
 			<dl>
 			  <dt>Title</dt><dd>{{ bookData.title }}</dd>
 			  <dt>Author</dt><dd>{{ bookData.author }}</dd>

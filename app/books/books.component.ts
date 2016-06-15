@@ -16,7 +16,7 @@ import { BooksService, IBook } from '../books/books.service';
 		<span class="container col-md-6">
 			<ul *ngIf="books !== null && books.length > 0" class="list-group">
 		      <li *ngFor="let book of books" class="list-group-item clearfix">
-		      	<book [bookData]="book"></book>
+		      	<book [bookData]="book" (bookSelected)="onBookSelected($event)" ></book>
 		      </li>
 		    </ul>
 	    </span>
@@ -25,7 +25,7 @@ import { BooksService, IBook } from '../books/books.service';
 export class BooksComponent implements OnInit { 
 
   	books: Array<IBook> = null;
-  	@Output() bookSelected: EventEmitter<IBook> = new EventEmitter();
+  	@Output() bookSelected: EventEmitter<IBook> = new EventEmitter<IBook>();
 
 	constructor(
 		private _booksService: BooksService
@@ -35,5 +35,9 @@ export class BooksComponent implements OnInit {
 
 	ngOnInit(){		
 		this.books = this._booksService.getBooks();
+	}
+
+	onBookSelected(book: IBook){
+		this.bookSelected.emit(book);
 	}
 }
