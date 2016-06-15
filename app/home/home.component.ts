@@ -23,7 +23,7 @@ import { ExternLibsService } from '../common/extern-libs/extern-libs.service';
 		<div class="container">
   			<div class="jumbotron">
 				<h1>{{ config.companyName }} Book Store</h1>
-				<p>Welcome! Checkout our top sellers below.</p> 
+				<p>Welcome! Checkout our top sellers as at {{ currentDate | momentFormatter: ['date'] }} below.</p> 
 			</div>
 		</div>
 		<hr/>
@@ -31,9 +31,7 @@ import { ExternLibsService } from '../common/extern-libs/extern-libs.service';
 			<books (bookSelected)="onBookSelected($event)"></books>
 			<book-details [bookData]="selectedBook"></book-details>
 		</div>
-		<div class="row">
-			<p>*As at {{ currentDate | momentFormatter: ['datetime'] }}</p>	
-		</div>	
+		<hr/>
 	`
 })
 export class HomeComponent implements OnInit { 

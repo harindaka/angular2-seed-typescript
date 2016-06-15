@@ -11,8 +11,10 @@ export class MomentFormatterPipe implements PipeTransform{
 		}
 		else{
 			let formatterString = 'datetime';
-			if(args[0].length > 0){
-				formatterString = args[0];
+			if(args.length > 0){
+				if(args[0] !== null){
+					formatterString = args[0];
+				}
 			}
 			
 			if(formatterString === 'date'){

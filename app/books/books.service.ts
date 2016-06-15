@@ -2,11 +2,11 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 
 export interface IBook {
-	bookId: number,
-	title: string
-	author: string
-	price: number,
-	imageUrl: string
+	bookId: number;
+	title: string;
+	author: string;
+	price: number;
+	imageUrl: string;
 }
 
 @Injectable()
@@ -22,7 +22,7 @@ export class BooksService{
 			},
 			{
 				bookId: 2,
-				title: "Harry Potter and the Philosopher''s Stone",
+				title: "Harry Potter and the Philosopher's Stone",
 				author: "J.K. Rowling",
 				price: 29.99,
 				imageUrl: 'https://d.gr-assets.com/books/1348821741l/7568427.jpg'
@@ -78,7 +78,7 @@ export class BooksService{
 			},
 			{
 				bookId: 10,
-				title: "Charlotte''s Web",
+				title: "Charlotte's Web",
 				author: "E.B. White",
 				price: 27.90,
 				imageUrl: 'https://d.gr-assets.com/books/1439632243l/24178.jpg'

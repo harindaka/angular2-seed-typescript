@@ -22,12 +22,15 @@ export class BooksFilterPipe implements PipeTransform{
 		else{
 			let filterString = '';
 
-			if(typeof args !== 'undefined' && args !== null && args[0].length > 0){
-				filterString = args[0];
+			if(typeof args !== 'undefined' && args !== null && args.length > 0){
+				if(args[0] !== null){
+					filterString = args[0];
+				}
 			}
 
+			filterString = filterString.toLowerCase();
 			return this.lazyjs(value).filter((book) => {
-				return ((book.title.indexOf(filterString) > -1) || (book.author.indexof(filterString) > -1))
+				return ((book.title.toLowerCase().indexOf(filterString) > -1) || (book.author.toLowerCase().indexOf(filterString) > -1))
 			}).toArray();
 		}
 	}

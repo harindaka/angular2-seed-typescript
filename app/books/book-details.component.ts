@@ -22,9 +22,8 @@ import { IBook } from './books.service';
 			</dl>
 			<button class="btn btn-success">Purchase</button>				
 		</span>
-		<span *ngIf="bookData === null" class="col-md-6">
-			<br/>
-			<span class="well well-lg">Select book to view details...</span>	
+		<span *ngIf="bookData === null">
+			<span class="well well-lg col-md-6">Select book to view details...</span>	
 		</span>
 	`
 })
