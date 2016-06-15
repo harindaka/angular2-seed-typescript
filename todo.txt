@@ -1,4 +1,4 @@
 Routing
 RxJS
-Output
 Config
+Two way binding
