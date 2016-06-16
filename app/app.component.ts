@@ -37,7 +37,7 @@ import { BooksService } from './books/books.service';
 		          </div>
 		          <div id="navbar" class="navbar-collapse collapse">
 		            <ul class="nav navbar-nav">
-		              <li class="active"><a href="#">Home</a></li>
+		              <li class="active"><a [routerLink]="['/home']">Home</a></li>
 		              <li><a href="#">About</a></li>
 		              <li><a href="#">Contact Us</a></li>
 		              <li class="dropdown">
@@ -76,7 +76,7 @@ import { BooksService } from './books/books.service';
 	]
 })
 @Routes([
-	{ path: '/', component: HomeComponent }
+	{ path: '/home', component: HomeComponent }
 
 ])
 export class AppComponent { 
