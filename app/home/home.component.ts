@@ -2,11 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { BooksComponent } from '../books/books.component';
 import { BookDetailsComponent } from '../books/book-details.component';
 
-import { MomentFormatterPipe } from '../common/pipes/moment-formatter.pipe';
+import { MomentFormatterPipe } from '../common/moment-formatter/moment-formatter.pipe';
 
 import { IBook } from '../books/books.service';
 
 import { ExternLibsService } from '../common/extern-libs/extern-libs.service';
+import { ConfigService } from '../common/config/config.service';
+import { SpinnerService } from '../common/spinner/spinner.service';
 
 @Component({
 	moduleId: module.id,
@@ -38,15 +40,26 @@ export class HomeComponent implements OnInit {
 
 	selectedBook: IBook = null;
 	currentDate: any = null;
-	config = { companyName: 'Acme' };
+	config: any = null;
 
-	constructor(private _externLibsService: ExternLibsService){
+	constructor(
+		private externLibsService: ExternLibsService,
+		private configService: ConfigService,
+		private spinnerService: SpinnerService
+	){
 
 	}
 
 	ngOnInit(){
-		let moment = this._externLibsService.moment();
+		let moment = this.externLibsService.moment();
 		this.currentDate = moment();
+
+		this.spinnerService.show();
+
+		this.configService.getConfig().subscribe((result) => {
+			this.config = result;
+			this.spinnerService.hide();
+		});
 	}
 
 	onBookSelected(book: IBook){

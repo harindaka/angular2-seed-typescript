@@ -3,6 +3,7 @@ import { SpinnerComponent } from './common/spinner/spinner.component';
 import { HomeComponent } from './home/home.component';
 
 import { ExternLibsService } from './common/extern-libs/extern-libs.service';
+import { ConfigService } from './common/config/config.service';
 import { SpinnerService } from './common/spinner/spinner.service';
 import { BooksService } from './books/books.service';
 
@@ -18,7 +19,7 @@ import { BooksService } from './books/books.service';
 	],
 	template: `
 		<spinner></spinner>
-
+		<div class="container pull-center">Using the {{ config.environment }} environment configuration.</div>
 		<div class="navbar navbar-default">
 	        <div class="container-fluid">
 	          <div class="navbar-header">
@@ -63,8 +64,23 @@ import { BooksService } from './books/books.service';
 	`,
 	providers: [
 		ExternLibsService,
+		ConfigService,
 		SpinnerService,
 		BooksService
 	]
 })
-export class AppComponent { }
+export class AppComponent { 
+	config: any = null;
+
+	constructor(
+		private configService: ConfigService,
+		private spinnerService: SpinnerService
+	){
+		this.spinnerService.show();
+
+		configService.getConfig().subscribe((result) => {
+			this.config = result;
+			this.spinnerService.hide();
+		})
+	}
+}
