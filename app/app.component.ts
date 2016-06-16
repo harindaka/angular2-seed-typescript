@@ -82,11 +82,14 @@ export class AppComponent {
 
 		this.spinnerService.show();
 
-		configService.getConfig().subscribe((result) => {
+		this.configService.getConfig().finally(() => {			
+			this.spinnerService.hide();
+		}).subscribe((result) => {
 			model.config = result;
 
-			this.model = model;
-			this.spinnerService.hide();
-		})
+			this.model = model;			
+		}, (e) => {			
+			console.log(e);
+		});
 	}
 }

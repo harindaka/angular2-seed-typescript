@@ -29,8 +29,7 @@ export class ConfigService {
 			return this.http.get(baseConfigUrl).map((res) => {
 				return res.json();
 			}).flatMap((result) => {
-				baseConfig = result;
-
+				baseConfig = result;												
 				if(typeof environment !== 'undefined' && environment !== null){
 					let envConfigUrl: string = '/environments/config.' + environment + '.json';
 					return this.http.get(envConfigUrl).map((res) => {
