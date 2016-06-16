@@ -22,25 +22,25 @@ import { SpinnerService } from '../common/spinner/spinner.service';
 		MomentFormatterPipe
 	],
 	template: `
-		<div class="container">
-  			<div class="jumbotron">
-				<h1>{{ config.companyName }} Book Store</h1>
-				<p>Welcome! Checkout our top sellers as at {{ currentDate | momentFormatter: ['date'] }} below.</p> 
+		<span *ngIf="model !== null">
+			<div class="container">
+	  			<div class="jumbotron">
+					<h1>{{ model.config.companyName }} Book Store</h1>
+					<p>Welcome! Checkout our top sellers as at {{ model.currentDate | momentFormatter: ['date'] }} below.</p> 
+				</div>
 			</div>
-		</div>
-		<hr/>
-		<div class="row">
-			<books (bookSelected)="onBookSelected($event)"></books>
-			<book-details [bookData]="selectedBook"></book-details>
-		</div>
-		<hr/>
+			<hr/>
+			<div class="row">
+				<books (bookSelected)="onBookSelected($event)"></books>
+				<book-details [bookData]="model.selectedBook"></book-details>
+			</div>
+			<hr/>
+		</span>
 	`
 })
 export class HomeComponent implements OnInit { 
 
-	selectedBook: IBook = null;
-	currentDate: any = null;
-	config: any = null;
+	model: any = null
 
 	constructor(
 		private externLibsService: ExternLibsService,
@@ -51,18 +51,25 @@ export class HomeComponent implements OnInit {
 	}
 
 	ngOnInit(){
+		let model: any = {}; 
+		model.selectedBook = null;
+
 		let moment = this.externLibsService.moment();
-		this.currentDate = moment();
+		model.currentDate = moment();
 
 		this.spinnerService.show();
 
 		this.configService.getConfig().subscribe((result) => {
-			this.config = result;
+			model.config = result;
+
+			this.model = model;
 			this.spinnerService.hide();
 		});
 	}
 
 	onBookSelected(book: IBook){
-		this.selectedBook = book;
+		if(this.model !== null){
+			this.model.selectedBook = book;
+		}
 	}
 }

@@ -19,42 +19,46 @@ import { BooksService, IBook } from '../books/books.service';
 		BooksFilterPipe
 	],
 	template: `
-		<span class="container col-md-6">
-			<ul *ngIf="books !== null && books.length > 0" class="list-group">
+		<span *ngIf="model !== null" class="container col-md-6">
+			<ul *ngIf="model.books !== null && model.books.length > 0" class="list-group">
 				<div class="row">
 		            <span class="form-group col-md-12">		                
 		                <input type="text" [(ngModel)]="filterString" placeholder="Enter title or author to filter..." class="form-control"/>
 		            </span>
 		        </div>
-		      	<li *ngFor="let book of books | booksFilter: [filterString]" class="list-group-item clearfix">
-		      		<book [bookData]="book" (bookSelected)="onBookSelected($event)" ></book>
+		      	<li *ngFor="let book of model.books | booksFilter: [filterString]" class="list-group-item clearfix">
+		      		<book [bookData]="book" (bookSelected)="onBookSelected($event)"></book>
 		      	</li>
 		    </ul>
 	    </span>
 	`
 })
 export class BooksComponent implements OnInit { 
-
-  	books: Array<IBook> = null;
+  	
+  	@Output() bookSelected: EventEmitter<IBook> = new EventEmitter<IBook>();
   	filterString: string = null;
 
-  	@Output() bookSelected: EventEmitter<IBook> = new EventEmitter<IBook>();
+  	model: any = null;
 
 	constructor(
-		private _spinnerService: SpinnerService,
-		private _booksService: BooksService
+		private spinnerService: SpinnerService,
+		private booksService: BooksService
 	){
 
 	}
 
 	ngOnInit(){	
-		this._spinnerService.show();
+		let model: any = {};
 
-		this._booksService.getBooks().subscribe((booksList) => {			
-			this.books = booksList;
-			this._spinnerService.hide();
+		this.spinnerService.show();
+
+		this.booksService.getBooks().subscribe((booksList) => {			
+			model.books = booksList;
+
+			this.model = model;
+			this.spinnerService.hide();
 		}, ()=>{
-			this._spinnerService.hide();
+			this.spinnerService.hide();
 		});
 	}
 

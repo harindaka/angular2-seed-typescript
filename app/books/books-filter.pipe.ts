@@ -6,13 +6,12 @@ import { ExternLibsService } from '../common/extern-libs/extern-libs.service';
 @Pipe({
 	name: 'booksFilter'
 })
-
 export class BooksFilterPipe implements PipeTransform{
-
-	lazyjs: any = null;
-
-	constructor(_externLibsService: ExternLibsService){
-		this.lazyjs = _externLibsService.lazyjs();
+	
+	constructor(
+		private externLibsService: ExternLibsService
+	){
+		
 	}
 
 	transform(value: Array<IBook>, args: string[]): any{
@@ -23,13 +22,14 @@ export class BooksFilterPipe implements PipeTransform{
 			let filterString = '';
 
 			if(typeof args !== 'undefined' && args !== null && args.length > 0){
-				if(args[0] !== null){
+				if(typeof args[0] !== 'undefined' && args[0] !== null){
 					filterString = args[0];
 				}
 			}
 
 			filterString = filterString.toLowerCase();
-			return this.lazyjs(value).filter((book) => {
+			let lazyjs: any = this.externLibsService.lazyjs();
+			return lazyjs(value).filter((book) => {
 				return ((book.title.toLowerCase().indexOf(filterString) > -1) || (book.author.toLowerCase().indexOf(filterString) > -1))
 			}).toArray();
 		}
