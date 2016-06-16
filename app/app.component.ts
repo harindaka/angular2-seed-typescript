@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router, Routes, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from '@angular/router';
+
 import { SpinnerComponent } from './common/spinner/spinner.component';
 import { HomeComponent } from './home/home.component';
 
@@ -14,6 +16,7 @@ import { BooksService } from './books/books.service';
 		'app.style.css'
 	],
 	directives: [
+		ROUTER_DIRECTIVES,
 		HomeComponent,
 		SpinnerComponent
 	],
@@ -60,17 +63,22 @@ import { BooksService } from './books/books.service';
 		    </div>
 		    
 			<div class="body">
-				<home></home>
+				<router-outlet></router-outlet>
 			</div>
 		<span>
 	`,
 	providers: [
+		ROUTER_PROVIDERS,
 		ExternLibsService,
 		ConfigService,
 		SpinnerService,
 		BooksService
 	]
 })
+@Routes([
+	{ path: '/', component: HomeComponent }
+
+])
 export class AppComponent { 
 	model: any = null;
 
