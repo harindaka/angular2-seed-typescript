@@ -76,8 +76,9 @@ import { BooksService } from './books/books.service';
 	]
 })
 @Routes([
+	{ path: '*', component: HomeComponent },
+	{ path: '/', component: HomeComponent },
 	{ path: '/home', component: HomeComponent }
-
 ])
 export class AppComponent { 
 	model: any = null;

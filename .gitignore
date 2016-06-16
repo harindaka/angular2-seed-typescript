@@ -1,4 +1,4 @@
-npm-debug.log
+npm-debug.log*
 app/**/*.js
 app/**/*.js.map
 bin/
