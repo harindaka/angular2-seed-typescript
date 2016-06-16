@@ -52,13 +52,14 @@ export class BooksComponent implements OnInit {
 
 		this.spinnerService.show();
 
-		this.booksService.getBooks().subscribe((booksList) => {			
+		this.booksService.getBooks().finally(() => {
+			this.spinnerService.hide();
+		}).subscribe((booksList) => {			
 			model.books = booksList;
 
-			this.model = model;
-			this.spinnerService.hide();
-		}, ()=>{
-			this.spinnerService.hide();
+			this.model = model;			
+		}, (e)=>{
+			console.log(e);
 		});
 	}
 
