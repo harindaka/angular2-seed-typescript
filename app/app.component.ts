@@ -3,6 +3,7 @@ import { Router, Routes, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from '@angular/ro
 
 import { SpinnerComponent } from './common/spinner/spinner.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { ErrorHandlerComponent } from './error-handler/error-handler.component';
 import { HomeComponent } from './home/home.component';
 
 import { ExternLibsService } from './common/extern-libs/extern-libs.service';
@@ -78,7 +79,7 @@ import { BooksService } from './books/books.service';
 })
 @Routes([			
 	{ path: '/', component: HomeComponent },
-	
+	{ path: '/error', component: ErrorHandlerComponent },
 	{ path: '/home', component: HomeComponent },
 
 

@@ -1,6 +1,7 @@
 Routing
 Centralized Error Handling
 Notifications
-Menu Component
 Move Books to HomeComponent folder
-Page Not Found page
+Unsubscribe from all subscription on implements OnDestroy.ngOnDestroy() {
+    this.sub.unsubscribe();
+  }  
