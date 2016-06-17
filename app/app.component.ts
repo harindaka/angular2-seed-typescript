@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router, Routes, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from '@angular/router';
 
 import { SpinnerComponent } from './common/spinner/spinner.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { HomeComponent } from './home/home.component';
 
 import { ExternLibsService } from './common/extern-libs/extern-libs.service';
@@ -75,10 +76,15 @@ import { BooksService } from './books/books.service';
 		BooksService
 	]
 })
-@Routes([
-	{ path: '*', component: HomeComponent },
+@Routes([			
 	{ path: '/', component: HomeComponent },
-	{ path: '/home', component: HomeComponent }
+	
+	{ path: '/home', component: HomeComponent },
+
+
+	//BEGIN: The PageNotFoundComponent needs to be the last route
+	{ path: '*', component: PageNotFoundComponent }	
+	//END: The PageNotFoundComponent needs to be the last route
 ])
 export class AppComponent { 
 	model: any = null;
