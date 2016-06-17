@@ -25,7 +25,6 @@ import { BooksService } from './books/books.service';
 	template: `
 		<spinner></spinner>
 		<span *ngIf="model !== null">
-			<div class="container text-center">Using the {{ model.config.environment }} environment configuration.</div>
 			<div class="navbar navbar-default">
 		        <div class="container-fluid">
 		          <div class="navbar-header">
@@ -92,6 +91,7 @@ export class AppComponent {
 
 	constructor(
 		private configService: ConfigService,
+		private externLibsService: ExternLibsService,
 		private spinnerService: SpinnerService
 	){
 		let model: any = {};
@@ -102,6 +102,12 @@ export class AppComponent {
 			this.spinnerService.hide();
 		}).subscribe((result) => {
 			model.config = result;
+
+			let environment = model.config.environment.toLowerCase();
+			if(environment !== 'production'){
+				let toastr = this.externLibsService.toastr();
+				toastr.info('Using the ' + environment + ' environment configuration...');
+			}
 
 			this.model = model;			
 		}, (e) => {			

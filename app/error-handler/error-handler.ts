@@ -3,8 +3,9 @@ import { Router } from '@angular/router';
 
 export class ErrorHandler extends ExceptionHandler{
 
+
 	constructor(
-	  	private router: Router 
+	  	//private router: Router 
 	){
 		super(null, null);
 
@@ -12,6 +13,6 @@ export class ErrorHandler extends ExceptionHandler{
 
 	call(error, stackTrace = null, reason = null) {
 		console.log(error);
-	    this.router.navigate(['/error']); //error._originalException.message
+	    //this.router.navigate(['/error']); //error._originalException.message
 	}
 }
