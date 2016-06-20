@@ -1,4 +1,14 @@
 {
 	"environment": "Base",
-	"companyName": "Acme Book Store"
+	"companyName": "Acme Book Store",
+	
+	"api": {
+		"baseUrl": "/",
+		"endpoints": {
+			"retrieveBooks" : {
+				"method": "get",
+				"url": "mock-data/books.json"
+			}
+		} 
+	} 
 }
