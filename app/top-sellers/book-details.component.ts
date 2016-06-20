@@ -22,9 +22,6 @@ import { IBook } from './books.service';
 			</dl>
 			<button (click)="onAddToCart()" class="btn btn-success">Add to Cart</button>				
 		</span>
-		<span *ngIf="bookData === null">
-			<span class="well well-lg col-md-6">Select book to view details...</span>	
-		</span>
 	`
 })
 export class BookDetailsComponent implements OnInit { 

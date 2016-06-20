@@ -1,10 +1,10 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { BookComponent } from '../books/book.component';
+import { BookComponent } from './book.component';
 
 import { BooksFilterPipe } from './books-filter.pipe';
 
 import { SpinnerService } from '../common/spinner/spinner.service';
-import { BooksService, IBook } from '../books/books.service';
+import { BooksService, IBook } from './books.service';
 
 @Component({
 	moduleId: module.id,

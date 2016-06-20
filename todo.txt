@@ -1,7 +1,7 @@
 Routing
 Centralized Error Handling
-Notifications
-Move Books to HomeComponent folder
 Unsubscribe from all subscription on implements OnDestroy.ngOnDestroy() {
     this.sub.unsubscribe();
-  }  
+  }
+Authors
+Define model in oninit

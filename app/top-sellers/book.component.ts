@@ -11,8 +11,7 @@ import { IBook } from './books.service';
 	directives: [  		
 	],
 	template: `
-		<span *ngIf="bookData !== null">			
-			<a href="#">
+		<span *ngIf="bookData !== null">
 				<span>
 					<h4 class="row container list-group-item-heading">
 				        {{ bookData.title }}
@@ -21,7 +20,6 @@ import { IBook } from './books.service';
 				        {{ bookData.author }}
 				    </span>
 				</span>
-			</a>
 			<span class="pull-right clearfix">
 				<button (click)="bookSelected.emit(bookData)" class="btn btn-info price-button">({{ bookData.price | currency:'USD':true:'1.2-2' }})</button>
 			</span>						

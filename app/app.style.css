@@ -2,3 +2,8 @@
 	margin:50px;
 	padding:0
 }
+
+.mouse-hand {
+	cursor: pointer; 
+	cursor: hand; 
+}
