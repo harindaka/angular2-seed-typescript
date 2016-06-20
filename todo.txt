@@ -5,3 +5,6 @@ Unsubscribe from all subscription on implements OnDestroy.ngOnDestroy() {
   }
 Authors
 Define model in oninit
+Page not found implementation.
+Jumbotron rounded corners
+Books list json

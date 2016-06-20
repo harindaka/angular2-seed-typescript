@@ -3,7 +3,7 @@ import { ROUTER_DIRECTIVES } from '@angular/router';
 
 @Component({
 	moduleId: module.id,
-	selector: 'home',
+	selector: 'page-not-found',
 	styleUrls: [
 	],
 	directives: [

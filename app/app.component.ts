@@ -20,6 +20,7 @@ import { BooksService } from './top-sellers/books.service';
 	directives: [
 		ROUTER_DIRECTIVES,
 		SpinnerComponent,
+		PageNotFoundComponent,
 		HomeComponent,		
 		TopSellersComponent
 	],
@@ -33,8 +34,8 @@ import { BooksService } from './top-sellers/books.service';
 		          </div>
 		          <div id="navbar" class="navbar-collapse collapse">
 		            <ul class="nav navbar-nav">
-		              <li class="active"><a [routerLink]="['/']">Home</a></li>
-		              <li><a [routerLink]="['/top-sellers']">Top Sellers</a></li>
+		              <li [class.active]="routeIsActive('/')"><a [routerLink]="['/']">Home</a></li>
+		              <li [class.active]="routeIsActive('top-sellers')"><a [routerLink]="['/top-sellers']">Top Sellers</a></li>
 		            </ul>		            
 		          </div>
 		        </div>
@@ -66,6 +67,7 @@ export class AppComponent {
 	model: any = null;
 
 	constructor(
+		private router: Router,
 		private configService: ConfigService,
 		private externLibsService: ExternLibsService,
 		private spinnerService: SpinnerService
@@ -89,5 +91,12 @@ export class AppComponent {
 		}, (e) => {			
 			console.log(e);
 		});
+	}
+
+	routeIsActive(routePath: string) {
+	    let currentRoute = this.router.urlTree.firstChild(this.router.urlTree.root);
+	     // e.g. 'Login' or null if route is '/'
+	    let segment = currentRoute == null ? '/' : currentRoute.segment;
+	    return  segment == routePath;
 	}
 }

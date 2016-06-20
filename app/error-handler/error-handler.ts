@@ -14,7 +14,7 @@ export class ErrorHandler extends ExceptionHandler{
 	call(error, stackTrace = null, reason = null) {
 		alert("Oops! The application will now relaod since the following unexpected error occurred: " + ((error._originalException) ? error._originalException.message : error.message));
 		console.log(error);
-		window.location.href = "/";
+		//window.location.href = "/";
 	    //this.router.navigate(['/error']); //error._originalException.message
 	}
 }
