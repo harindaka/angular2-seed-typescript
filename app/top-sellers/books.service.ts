@@ -91,7 +91,7 @@ export class BooksService{
 				//Simulate service request delay
 				observer.next(this.mockBooksList);
 				observer.complete();
-			}, 3000);
+			}, 1000);
 		});
 	}
 }

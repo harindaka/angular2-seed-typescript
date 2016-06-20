@@ -10,8 +10,7 @@ declare var toastr: any;
 
 @Injectable()
 export class ExternLibsService {
-	constructor() { 
-		toastr.options = {
+	toasterDefaults : any = {
 		  "closeButton": true,
 		  "debug": false,
 		  "newestOnTop": true,
@@ -27,7 +26,10 @@ export class ExternLibsService {
 		  "hideEasing": "linear",
 		  "showMethod": "fadeIn",
 		  "hideMethod": "fadeOut"
-		}
+	};
+
+	constructor() { 
+		
 	}
 
 	jquery(): any {
@@ -51,6 +53,8 @@ export class ExternLibsService {
 	}
 
 	toastr(): any {
+
+		toastr.options = this.toasterDefaults;
 		return toastr;
 	}
 }

@@ -28,14 +28,8 @@ import { BooksService } from './top-sellers/books.service';
 		<span *ngIf="model !== null">
 			<div class="navbar navbar-default">
 		        <div class="container-fluid">
-		          <div class="navbar-header">
-		            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-		              <span class="sr-only">Toggle navigation</span>
-		              <span class="icon-bar"></span>
-		              <span class="icon-bar"></span>
-		              <span class="icon-bar"></span>
-		            </button>
-		            <a class="navbar-brand" href="#">{{model.config.companyName}}</a>
+		          <div class="navbar-header">		            
+		            <a [routerLink]="['/']" class="navbar-brand">{{model.config.companyName}}</a>
 		          </div>
 		          <div id="navbar" class="navbar-collapse collapse">
 		            <ul class="nav navbar-nav">
@@ -88,7 +82,7 @@ export class AppComponent {
 			let environment = model.config.environment.toLowerCase();
 			if(environment !== 'production'){
 				let toastr = this.externLibsService.toastr();
-				toastr.info('Using the ' + environment + ' environment configuration...');
+				toastr.info('Using the ' + environment + ' environment configuration...', null, { timeOut: 1000 });
 			}
 
 			this.model = model;			
